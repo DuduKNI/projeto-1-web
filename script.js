@@ -68,6 +68,11 @@ document.addEventListener("DOMContentLoaded", function(){
         erroContainer.style.display = 'none';
     }
 
+    // Função para limpar a pesquisa
+    function limparPesquisa() {
+        musicasContainer.innerHTML = '';
+    }
+
     //Adiciona um evento de clique no botao de pesquisa
     searchButton.addEventListener('click', function(){
         const termo = searchInput.value.trim();
@@ -109,9 +114,12 @@ document.addEventListener("DOMContentLoaded", function(){
         detalhesMusicaContainer.innerHTML = '';
     }
 
+    // Adiciona um manipulador de eventos ao título para limpar a pesquisa
     tituloMusicas.addEventListener('click', function(){
+        limparPesquisa();
         ocultarErro();
     });
 
+    // Adiciona um manipulador de eventos para fechar o popup
     document.getElementById('closeButton').addEventListener('click', fecharPopup);
 });
