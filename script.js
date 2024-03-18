@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
     const musicasContainer = document.getElementById('musicas');
+    const popupDetalhesMusica = document.getElementById('popupDetalhesMusica');
     const detalhesMusicaContainer = document.getElementById('detalhesMusica');
     const searchInput = document.getElementById('searchInput')
     const searchButton = document.getElementById('searchButton');
@@ -37,6 +38,10 @@ document.addEventListener("DOMContentLoaded", function(){
             imagem.alt = `${musica.trackName} - ${musica.artistName}`;
             imagem.classList.add('musica-imagem');
 
+            musicaDiv.addEventListener('click', function(){
+                exibirDetalhesMusica(musica);
+            });
+
             musicaDiv.appendChild(imagem);
             musicaDiv.appendChild(titulo);
             musicaDiv.appendChild(artista);
@@ -67,4 +72,25 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         }
     });
+
+
+    //Adiciona um popup quando clicar em uma música
+    function exibirDetalhesMusica(musica){
+        detalhesMusicaContainer.innerHTML = `
+            <h2>${musica.trackName}</h2>
+            <p>Artista: ${musica.artistName}</p>
+            <p>Álbum: ${musica.collectionName}</p>
+            <img src="${musica.artworkUrl100}" alt="${musica.trackName} - ${musica.artistName}" class="musica-imagem">
+        `;
+        popupDetalhesMusica.style.display = 'block';
+    }
+
+    function fecharPopup(){
+        //oculta o popup
+        popupDetalhesMusica.style.display = 'none';
+        //Limpa o conteúdo do popup
+        detalhesMusicaContainer.innerHTML = '';
+    }
+
+    document.getElementById('closeButton').addEventListener('click', fecharPopup);
 });
