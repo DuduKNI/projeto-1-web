@@ -16,11 +16,16 @@ body {
 }
 
 h1 {
-    font-family: 'Madimi One', cursive; 
+    font-family: 'Madimi One', cursive;
     text-align: center;
-    color: #5800FF; 
+    color: #5800FF;
     font-size: 36px;
     margin-bottom: 30px;
+    transition: color 0.3s ease; /* Adiciona uma transição suave na cor */
+}
+
+h1:hover {
+    color: #6a0dad; /* Muda a cor para roxo quando o mouse estiver sobre o título */
 }
 
 .search-container {
@@ -147,6 +152,11 @@ button:hover {
     cursor: pointer;
     color: #fff;
     font-size: 24px;
+    transition: color 0.3s ease; 
+}
+
+.close:hover {
+    color: #5800FF; 
 }
 
 #erroContainer {
